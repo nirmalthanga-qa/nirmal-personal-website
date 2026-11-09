@@ -484,6 +484,11 @@ nav.menu .num {
 .hero:not(.play) .hero.play .hero-title {
   animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
+@media (max-width: 560px) {
+  .hero-title {
+    font-size: clamp(4rem, 18vw, 7rem);
+  }
+}
 .hero.play .cue {
   position: absolute;
   left: 50%;

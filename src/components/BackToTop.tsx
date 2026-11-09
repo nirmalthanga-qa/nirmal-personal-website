@@ -17,21 +17,23 @@ export function BackToTop() {
       const carLane = document.querySelector('.f1-lane');
       const el = ref.current;
       if (el) {
+        el.style.setProperty('--lift', '0px');
+        const buttonRect = el.getBoundingClientRect();
         let lift = footer
           ? Math.max(0, window.innerHeight - footer.getBoundingClientRect().top)
           : 0;
-        el.style.setProperty('--lift', `${Math.round(lift)}px`);
-
-        const buttonRect = el.getBoundingClientRect();
         const laneRect = carLane?.getBoundingClientRect();
+        const liftedTop = buttonRect.top - lift;
+        const liftedBottom = buttonRect.bottom - lift;
         if (
           laneRect &&
-          buttonRect.bottom > laneRect.top &&
-          buttonRect.top < laneRect.bottom
+          liftedBottom > laneRect.top &&
+          liftedTop < laneRect.bottom
         ) {
-          lift += buttonRect.bottom - laneRect.top + 12;
-          el.style.setProperty('--lift', `${Math.round(lift)}px`);
+          lift += liftedBottom - laneRect.top + 12;
         }
+        lift = Math.min(lift, Math.max(0, window.innerHeight - buttonRect.height - 40));
+        el.style.setProperty('--lift', `${Math.round(lift)}px`);
       }
     };
     const onScroll = () => {
