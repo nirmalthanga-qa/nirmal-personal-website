@@ -1,0 +1,2665 @@
+/* Who Am I: icons, portfolio button and room for them (loaded after global.css) */
+#about {
+  min-height: 100svh;
+  justify-content: center;
+  padding-top: clamp(5.5rem, 10vw, 7rem);
+  padding-bottom: clamp(5.5rem, 9vw, 6.5rem);
+}
+/* the header's solid background is darker than the page, so a long shadow would show as a ghost */
+.hd.solid .logo {
+  text-shadow: 2px 3px 0 #6a1017;
+}
+.pips {
+  display: none;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 1rem;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+.ico {
+  --size: clamp(104px, 27vw, 170px);
+  width: var(--size);
+  height: var(--size);
+  opacity: 0;
+  transform: var(--from) scale(1.7);
+}
+.ico.l {
+  --from: translate(-90px, 90px);
+}
+.ico.c {
+  --from: translate(0, 110px);
+}
+.ico.r {
+  --from: translate(90px, 90px);
+}
+.icons.in .ico {
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d),
+    opacity 0.8s ease var(--d);
+}
+.ico-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(3px 4px 0 var(--shadow));
+}
+.ico-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.ico-ring .seg {
+  transform-origin: 50px 50px;
+  animation: r-spin 20s linear infinite;
+}
+.ico:nth-child(2) .ico-ring .seg {
+  animation-direction: reverse;
+}
+.ico-ring .glow {
+  fill: var(--acc);
+  opacity: 0.12;
+  animation: ico-glow 9s infinite;
+}
+.ico-glyph {
+  position: absolute;
+  inset: 19%;
+  width: 62%;
+  height: 62%;
+  display: block;
+  fill: none;
+  stroke: var(--acc);
+  stroke-width: 2.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: ico-pop 9s infinite;
+}
+.ico-glyph .dot {
+  fill: var(--acc);
+  stroke: none;
+}
+.ico:nth-child(2) .glow,
+.ico:nth-child(2) .ico-glyph {
+  animation-delay: 3s;
+}
+.ico:nth-child(3) .glow,
+.ico:nth-child(3) .ico-glyph {
+  animation-delay: 6s;
+}
+@keyframes ico-glow {
+  0%,
+  30% {
+    opacity: 0.4;
+  }
+  36%,
+  100% {
+    opacity: 0.12;
+  }
+}
+@keyframes ico-pop {
+  0%,
+  30% {
+    transform: scale(1.1);
+  }
+  36%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* footer */
+footer {
+  flex-wrap: wrap;
+  align-items: center;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--acc);
+  font-weight: 600;
+  text-decoration: none;
+}
+.social svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  filter: drop-shadow(1.5px 2px 0 var(--shadow));
+}
+.social .dot {
+  fill: currentColor;
+  stroke: none;
+}
+.social:hover svg,
+.social:focus-visible svg {
+  transform: scale(1.1);
+  transition: transform 0.2s;
+}
+
+/* back to top: the mask, tinted with the theme colour; its eyes glow behind the slits */
+.top {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: calc(1.25rem + var(--lift, 0px) + env(safe-area-inset-bottom, 0px));
+  z-index: 45;
+  width: clamp(44px, 5vw, 54px);
+  aspect-ratio: 201/300;
+  display: block;
+  filter: drop-shadow(3px 4px 0 var(--shadow));
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    visibility 0s 0.3s;
+}
+.top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+}
+.top.show:hover,
+.top.show:focus-visible {
+  transform: translateY(-4px);
+}
+body.menu .top {
+  opacity: 0;
+  visibility: hidden;
+}
+.top-mask {
+  position: absolute;
+  inset: 0;
+  background: var(--acc);
+  -webkit-mask: url(/top-mask.png) center/contain no-repeat;
+  mask: url(/top-mask.png) center/contain no-repeat;
+}
+.top-eyes {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 48%;
+  height: 8.5%;
+  background: #fff3c4;
+  border-radius: 3px;
+  opacity: 0.35;
+  animation: top-eyes 3s ease-in-out infinite;
+}
+.top:hover .top-eyes,
+.top:focus-visible .top-eyes {
+  opacity: 1;
+  animation: none;
+}
+@keyframes top-eyes {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ico {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ico * {
+    animation: none !important;
+  }
+  .ico-ring .glow {
+    opacity: 0.2;
+  }
+  .top,
+  .top.show {
+    transition: none;
+  }
+  .top-eyes {
+    animation: none;
+  }
+}
+
+/* header logo mark: NK, sized to match the 56px burger */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+}
+.logo-glyph {
+  display: inline-block;
+  animation: logo-pop 4.5s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+}
+@keyframes logo-pop {
+  0%,
+  70%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+  76% {
+    transform: scale(1.16) rotate(-4deg);
+  }
+  82% {
+    transform: scale(1) rotate(2deg);
+  }
+  88% {
+    transform: scale(1.05) rotate(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-glyph {
+    animation: none;
+  }
+}
+
+/* laptop icon acts as the portfolio link */
+.ico.clickable {
+  cursor: pointer;
+  outline-offset: 8px;
+  border-radius: 999px;
+}
+.ico.clickable .ico-core {
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+.ico.clickable:hover .ico-core,
+.ico.clickable:focus-visible .ico-core {
+  transform: translate(-2px, -2px) scale(1.04);
+  filter: drop-shadow(5px 6px 0 var(--shadow));
+}
+.ico.clickable:active .ico-core {
+  transform: scale(0.98);
+}
+
+/* facts section */
+.facts {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+  max-width: 820px;
+}
+.fact {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+.fact-k {
+  font: 600 0.82rem/1 var(--body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.fact-v {
+  font: 400 clamp(1.6rem, 4.5vw, 2.4rem)/1.1 var(--display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.fact-month {
+  color: var(--ink);
+}
+.fact-day {
+  color: var(--acc);
+  display: inline-block;
+  animation: day-bounce 3s ease-in-out infinite;
+}
+@keyframes day-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  70% {
+    transform: translateY(-6px) scale(1.1);
+  }
+  80% {
+    transform: translateY(0) scale(1);
+  }
+}
+.fact-glyph {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: var(--acc);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(1px 1.5px 0 var(--shadow));
+}
+.fact-glyph .dot {
+  fill: var(--acc);
+  stroke: none;
+}
+
+/* icons inline with fact values: stroke follows --acc, drop shadow matches the theme */
+.fact-glyph {
+  flex: 0 0 auto;
+  filter: drop-shadow(1px 1.5px 0 var(--shadow));
+}
+.fact-v .fact-glyph {
+  width: 1em;
+  height: 1em;
+}
+
+/* sub-headline under Welcome — same colour + rise animation as the "Who Am I?" heading, slightly smaller */
+.hero-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers "Welcome" and the line under it */
+  text-align: center;
+}
+
+.hero-sub {
+  text-align: center;
+  margin-inline: auto;
+  /* letter-spacing adds a gap after the last letter, which pushes centered text slightly left.
+     This cancels it; use the same value as your letter-spacing. */
+  margin-right: calc(-1 * 0.3em);
+  margin: 1.2rem 0 0;
+  max-width: 52ch;
+  color: var(--ink);
+  font: 400 clamp(1.1rem, 2.6vw, 1.6rem)/1.35 var(--body);
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-sub-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s forwards;
+}
+.hero:not(.play) .hero-sub {
+  animation: none;
+  opacity: 0;
+  transform: translateY(18px);
+}
+.hero.play .hero-sub {
+  animation: hero-sub-rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s forwards;
+}
+@keyframes hero-sub-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-sub,
+  .hero.play .hero-sub {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+/* mobile: stack the three role icons vertically and pull the section content up */
+@media (max-width: 640px) {
+  #about {
+    padding-top: clamp(4rem, 8vw, 5rem);
+    padding-bottom: clamp(3rem, 6vw, 4rem);
+    min-height: auto;
+  }
+
+  .icons {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: clamp(1.25rem, 4vw, 1.75rem);
+    margin-top: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .ico {
+    --size: clamp(110px, 32vw, 140px);
+    width: var(--size);
+    height: var(--size);
+  }
+
+  /* each icon drops in from below one after another, same easing as before */
+  .ico.l {
+    --from: translateY(60px);
+  }
+  .ico.c {
+    --from: translateY(60px);
+  }
+  .ico.r {
+    --from: translateY(60px);
+  }
+}
+@media (max-width: 360px) {
+  .ico {
+    --size: clamp(96px, 28vw, 120px);
+  }
+  .icons {
+    gap: 1rem;
+  }
+}
+@media (max-width: 640px) {
+  .hero.play .cue {
+    display: none;
+  }
+}
+/* fact icons: gentle pop in step with the "17" bounce */
+.fact-v .fact-glyph {
+  animation: fact-pop 3s ease-in-out infinite;
+}
+.fact:nth-child(2) .fact-glyph {
+  animation-delay: 0s;
+} /* blood  */
+.fact:nth-child(3) .fact-glyph {
+  animation-delay: 0.15s;
+} /* home   */
+.fact:nth-child(4) .fact-glyph {
+  animation-delay: 0.3s;
+} /* laptop */
+@keyframes fact-pop {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  70% {
+    transform: translateY(-4px) scale(1.15);
+  }
+  80% {
+    transform: translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fact-v .fact-glyph {
+    animation: none;
+  }
+}
+/* person glyph before the personality type: gentle head-bob */
+.fact-v .fact-glyph.person {
+  animation: person-bob 3s ease-in-out infinite;
+}
+@keyframes person-bob {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-3px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fact-v .fact-glyph.person {
+    animation: none;
+  }
+}
+/* personal favorites section */
+.favorites {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.favorites .fact-list {
+  max-width: 900px;
+}
+
+/* glyphs inline in the value column: same stroke + shadow language as the facts page */
+.fav-glyph {
+  flex: 0 0 auto;
+  width: 1.15em;
+  height: 1.15em;
+  fill: none;
+  stroke: var(--acc);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(1px 1.5px 0 var(--shadow));
+  animation: fav-glyph-glow 3.2s ease-in-out infinite;
+}
+@keyframes fav-glyph-glow {
+  0%,
+  60%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(1px 1.5px 0 var(--shadow));
+  }
+  70% {
+    transform: scale(1.14);
+    filter: drop-shadow(2px 3px 0 var(--shadow));
+  }
+  80% {
+    transform: scale(1);
+    filter: drop-shadow(1px 1.5px 0 var(--shadow));
+  }
+}
+
+/* colour dot swatch */
+.fav-dot {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  border-radius: 999px;
+  box-shadow: 1px 1.5px 0 var(--shadow);
+  border: 1px solid rgba(255, 247, 221, 0.45);
+}
+
+/* give the Vel icon a slightly larger footprint so the spear reads well */
+.fav-glyph.vel {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+@media (max-width: 640px) {
+  .favorites {
+    min-height: auto;
+    padding-top: clamp(3.5rem, 8vw, 5rem);
+    padding-bottom: clamp(3.5rem, 8vw, 5rem);
+  }
+  .favorites .fact {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .favorites .fact-k {
+    margin-bottom: 0.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fav-glyph {
+    animation: none;
+  }
+}
+
+/* automotive section */
+.automotive {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+/* Favourite brand hero */
+.auto-fav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.auto-fav-label {
+  font: 600 0.82rem/1 var(--body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+.auto-fav-name {
+  color: #fff7dd;
+  font: 400 clamp(3rem, 8vw, 5.5rem)/1 var(--display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow:
+    0.02em 0.02em 0 #7e131b,
+    0.04em 0.04em 0 #83151d,
+    0.06em 0.06em 0 #88171f,
+    0.08em 0.08em 0 #8e1921,
+    0.1em 0.1em 0 #931a22,
+    0.12em 0.12em 0 #991d24,
+    0.14em 0.14em 0 #9f1e26,
+    0.16em 0.16em 0 #a52128,
+    0.18em 0.18em 0 #ab232a;
+}
+
+/* Side-by-side layout for Logo + Name */
+.auto-fav-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.auto-fav-mark {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(
+    50px,
+    10vw,
+    80px
+  ); /* Slightly smaller so it fits nicely next to the text */
+  height: clamp(50px, 10vw, 80px);
+  color: #d9c77f;
+  animation: auto-mark-float 4s ease-in-out infinite;
+}
+.auto-fav-mark svg,
+.auto-fav-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(3px 4px 0 var(--shadow));
+}
+
+.auto-fav-name {
+  color: #fff7dd;
+  font: 400 clamp(3rem, 8vw, 5.5rem)/1 var(--display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow:
+    0.02em 0.02em 0 #7e131b,
+    0.04em 0.04em 0 #83151d,
+    0.06em 0.06em 0 #88171f,
+    0.08em 0.08em 0 #8e1921,
+    0.1em 0.1em 0 #931a22,
+    0.12em 0.12em 0 #991d24,
+    0.14em 0.14em 0 #9f1e26,
+    0.16em 0.16em 0 #a52128,
+    0.18em 0.18em 0 #ab232a;
+}
+
+@keyframes auto-mark-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Mobile: Stack them vertically again since horizontal space is tight */
+@media (max-width: 640px) {
+  .auto-fav-main {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .auto-fav-mark {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* shared brand mark stroke style */
+.brand-mark {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Top 5 heading */
+.auto-top-title {
+  margin: 0;
+  color: var(--acc);
+  font: 400 clamp(1.6rem, 4vw, 2.6rem)/1.1 var(--display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow:
+    0.02em 0.02em 0 #7e131b,
+    0.04em 0.04em 0 #83151d,
+    0.06em 0.06em 0 #88171f,
+    0.08em 0.08em 0 #8e1921,
+    0.1em 0.1em 0 #931a22,
+    0.12em 0.12em 0 #991d24,
+    0.14em 0.14em 0 #9f1e26,
+    0.16em 0.16em 0 #a52128,
+    0.18em 0.18em 0 #ab232a;
+}
+
+/* Top 5 list */
+.auto-cars {
+  list-style: none;
+  margin: 1rem auto 0; /* <--- Changed from 3rem to 1rem */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 820px;
+  text-align: left;
+}
+
+.auto-car {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1rem 1.4rem;
+  border: 1px solid rgba(217, 199, 127, 0.22);
+  border-radius: 12px;
+  background: linear-gradient(
+    155deg,
+    rgba(217, 199, 127, 0.08),
+    rgba(217, 199, 127, 0.02)
+  );
+  box-shadow: 4px 5px 0 var(--shadow);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.auto-car:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 8px 0 var(--shadow);
+}
+
+.auto-car-num {
+  color: var(--acc);
+  font: 400 1.5rem/1 var(--display);
+  letter-spacing: 0.04em;
+  min-width: 2ch;
+  text-align: right;
+}
+.auto-car-mark {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d9c77f;
+  flex-shrink: 0;
+}
+.auto-car-mark svg,
+.auto-car-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.auto-car-name {
+  color: var(--ink);
+  font: 400 clamp(1.05rem, 2vw, 1.35rem)/1.2 var(--display);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .automotive {
+    padding-top: clamp(3.5rem, 8vw, 5rem);
+    padding-bottom: clamp(3.5rem, 8vw, 5rem);
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+  .auto-car {
+    grid-template-columns: auto auto 1fr;
+    gap: 0.7rem;
+    padding: 0.8rem 0.9rem;
+  }
+  .auto-car-mark {
+    width: 28px;
+    height: 28px;
+  }
+  .auto-car-num {
+    font-size: 1.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auto-fav-mark {
+    animation: none;
+  }
+}
+
+.auto-car-mark img {
+  filter: brightness(0) saturate(100%) invert(84%) sepia(28%) saturate(538%)
+    hue-rotate(343deg) brightness(92%) contrast(88%);
+}
+/* brand images: tint real SVGs to the theme accent */
+.brand-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* hue-shift + brightness to land on ~#D9C77F; refine if yours drifts */
+  filter: brightness(0) saturate(100%) invert(84%) sepia(23%) saturate(600%)
+    hue-rotate(348deg) brightness(93%) contrast(88%)
+    drop-shadow(3px 4px 0 var(--shadow));
+}
+
+/* row images: smaller drop shadow so they sit tight with the row */
+.auto-car-mark .brand-img {
+  filter: brightness(0) saturate(100%) invert(84%) sepia(23%) saturate(600%)
+    hue-rotate(348deg) brightness(93%) contrast(88%)
+    drop-shadow(1.5px 2px 0 var(--shadow));
+}
+
+/* hero mark on automotive section */
+.auto-fav-mark .brand-img {
+  animation: auto-mark-float 4s ease-in-out infinite;
+}
+
+/* zodiac: scorpion image that walks left <-> right below the facts list */
+.zodiac-track {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  height: 7rem;
+  margin-top: 2.5rem;
+}
+.zodiac {
+  --zw: 6.5rem;
+  position: absolute;
+  top: 1.6rem;
+  left: 0;
+  width: var(--zw);
+  aspect-ratio: 526 / 344;
+  animation: zodiac-run 24s ease-in-out infinite;
+}
+.zodiac.open,
+.zodiac.open .zodiac-btn,
+.zodiac.open .zodiac-img {
+  animation-play-state: paused;
+}
+.zodiac-btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  animation: zodiac-flip 24s step-end infinite;
+}
+.zodiac-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--acc);
+  -webkit-mask: url(/scorpion.png) center/contain no-repeat;
+  mask: url(/scorpion.png) center/contain no-repeat;
+  filter: drop-shadow(3px 4px 0 var(--shadow));
+  transform-origin: 50% 70%;
+  animation: scorp-walk 1.4s ease-in-out infinite;
+}
+.zodiac-btn:hover .zodiac-img,
+.zodiac-btn:focus-visible .zodiac-img {
+  background: var(--ink);
+}
+
+/* walking: small bob + sway while it travels */
+@keyframes scorp-walk {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+}
+@keyframes zodiac-run {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: calc(100% - var(--zw));
+  }
+  100% {
+    left: 0;
+  }
+}
+/* face right on the way out, left on the way back */
+@keyframes zodiac-flip {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+}
+
+/* tooltip rides along with the scorpion */
+.zodiac-tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.6rem);
+  transform: translate(-50%, 6px) scale(0.95);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(217, 199, 127, 0.4);
+  border-radius: 8px;
+  background: var(--bg-deep);
+  color: var(--acc);
+  font: 400 1.05rem/1 var(--display);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  box-shadow: 3px 4px 0 var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    visibility 0s 0.2s;
+}
+.zodiac-tip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) scale(1);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+@media (max-width: 640px) {
+  .zodiac {
+    --zw: 5rem;
+  }
+  .zodiac-track {
+    height: 5.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zodiac,
+  .zodiac-btn,
+  .zodiac-img {
+    animation: none;
+  }
+  .zodiac-tip,
+  .zodiac-tip.show {
+    transition: none;
+  }
+}
+/* Vel: outline draws itself, then fills in (desktop only) */
+.fav-layout {
+  display: block;
+}
+.vel {
+  display: none;
+}
+@media (min-width: 960px) {
+  .fav-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, 24vw, 320px);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+  .fav-layout .fact-list {
+    max-width: none;
+  }
+  .vel {
+    display: block;
+    justify-self: end;
+    width: 100%;
+  }
+  .vel svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+    filter: drop-shadow(2px 3px 0 var(--shadow));
+  }
+  .vel-p {
+    stroke-width: 1.1;
+    stroke-linejoin: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    fill-opacity: 0;
+  }
+  .vel-p.ink {
+    stroke: var(--acc);
+    fill: var(--acc);
+  }
+  .vel-p.red {
+    stroke: var(--ink);
+    fill: var(--ink);
+  }
+  /* each outline draws in turn from the tip down, then the fill fades in at the end */
+  .vel.draw .vel-p {
+    animation:
+      vel-draw 1.6s cubic-bezier(0.45, 0, 0.25, 1) forwards,
+      vel-fill 1.2s ease forwards;
+    animation-delay:
+      calc(var(--i) / var(--n) * 5.5s), calc(6.2s + var(--i) / var(--n) * 1.5s);
+  }
+}
+@keyframes vel-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes vel-fill {
+  to {
+    fill-opacity: 1;
+    stroke-width: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vel-p {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+    stroke-width: 0.3;
+  }
+  .vel.draw .vel-p {
+    animation: none;
+  }
+}
+
+/* favorites on mobile: label and value stay on one row */
+@media (max-width: 640px) {
+  .favorites .fact {
+    grid-template-columns: 6.4rem 1fr;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .favorites .fact-k {
+    margin-bottom: 0;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+  .favorites .fact-v {
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    min-width: 0;
+  }
+}
+/* Contact Section */
+.contact {
+  min-height: 50svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 199, 127, 0.3);
+  background: rgba(217, 199, 127, 0.05);
+  color: var(--acc);
+  text-decoration: none;
+  font: 600 1rem/1 var(--body);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 4px 5px 0 var(--shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.social-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.social-btn svg .dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.social-btn:hover,
+.social-btn:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 8px 0 var(--shadow);
+  background: rgba(217, 199, 127, 0.1);
+}
+
+/* Center the footer */
+footer {
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---- Facts page: two-column layout + chat ---- */
+.facts-layout {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .facts-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 26rem;
+  margin-inline: auto;
+  min-height: 11rem; /* keeps the layout from jumping while messages appear */
+}
+@media (min-width: 900px) {
+  .chat {
+    margin-inline: auto 0;
+  }
+}
+
+.msg {
+  position: relative;
+  max-width: 85%;
+  padding: 0.75rem 1.1rem;
+  border-radius: 1.3rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.msg.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* visitor (left) */
+/* visitor (left) */
+.msg.in {
+  align-self: flex-start;
+  background: var(--cream, #f3e6cf);
+  color: rgb(172, 35, 42);
+  border-bottom-left-radius: 0.3rem;
+  transform-origin: left bottom;
+  box-shadow:
+    3px 3px 0 rgba(0, 0, 0, 0.12),
+    6px 6px 0 rgba(0, 0, 0, 0.09),
+    9px 9px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Nirmal (right) */
+.msg.out {
+  align-self: flex-end;
+  background: var(--red-deep, #7a1912);
+  color: var(--cream, #f3e6cf);
+  border-bottom-right-radius: 0.3rem;
+  transform-origin: right bottom;
+  box-shadow:
+    3px 3px 0 rgba(0, 0, 0, 0.16),
+    6px 6px 0 rgba(0, 0, 0, 0.11),
+    9px 9px 0 rgba(0, 0, 0, 0.07);
+}
+
+.chat-avatar {
+  position: absolute;
+  left: -0.6rem;
+  bottom: -0.6rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cream, #f3e6cf);
+  color: var(--red-deep, #7a1912);
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+/* typing dots */
+.msg.typing {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.9rem 1.1rem;
+}
+.msg.typing span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--cream, #f3e6cf);
+  animation: chat-bounce 1s infinite ease-in-out;
+}
+.msg.typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.msg.typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes chat-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-0.35rem);
+    opacity: 1;
+  }
+}
+
+.chat-status {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  color: var(--cream, #f3e6cf);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.chat-status.show {
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msg {
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  }
+
+  .msg.typing span {
+    animation: chat-bounce 1.4s infinite ease-in-out;
+  }
+
+  .chat-status {
+    transition: opacity 0.8s ease;
+  }
+}
+
+/* ---- Facts page: iPad with Messages ---- */
+.ip {
+  --ip-red: rgb(172, 35, 42);
+  --ip-cream: #f3e6cf;
+  --ip-paper: #fbf6ec;
+  --ico: clamp(2.6rem, 7vw, 3.8rem);
+
+  width: min(100%, 54rem);
+  margin: 2rem auto 0;
+  aspect-ratio: 4 / 3;
+  padding: clamp(0.5rem, 1.6vw, 0.9rem);
+  background: #161617;
+  border-radius: clamp(1.4rem, 4vw, 2.4rem);
+  box-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.14),
+    9px 9px 0 rgba(0, 0, 0, 0.1),
+    14px 14px 0 rgba(0, 0, 0, 0.07);
+}
+@media (max-width: 700px) {
+  .ip {
+    aspect-ratio: 3 / 4;
+    max-width: 26rem;
+  }
+}
+
+.ip-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: clamp(0.9rem, 2.6vw, 1.6rem);
+  background:
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(243, 230, 207, 0.2) 0 20%,
+      transparent 20.4%
+    ),
+    radial-gradient(
+      circle at 12% 88%,
+      rgba(0, 0, 0, 0.14) 0 26%,
+      transparent 26.4%
+    ),
+    var(--ip-red);
+}
+
+/* ---- home screen ---- */
+.ip-home {
+  position: absolute;
+  inset: 0;
+  padding: 7% 6%;
+  transition:
+    transform 1.4s ease,
+    filter 1.4s ease,
+    opacity 1.4s ease;
+}
+.ip-home.away {
+  transform: scale(0.92);
+  filter: blur(3px);
+  opacity: 0.5;
+}
+
+.ip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--ico));
+  gap: clamp(0.8rem, 3vw, 1.6rem);
+}
+
+.ip-app {
+  display: grid;
+  place-items: center;
+  width: var(--ico);
+  height: var(--ico);
+  border-radius: 22%;
+  background: var(--ip-cream);
+  box-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.14),
+    4px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.ip-grid .ip-app:nth-child(3n + 2) {
+  background: #2a1210;
+}
+.ip-grid .ip-app:nth-child(3n) {
+  background: #e7c9a0;
+}
+
+.ip-dock {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  padding: 0.55rem 0.7rem;
+  border-radius: 1.7rem;
+  background: rgba(243, 230, 207, 0.28);
+  backdrop-filter: blur(10px);
+}
+
+.ip-msgs {
+  background: linear-gradient(#5be26f, #20b43b);
+}
+.ip-msgs svg {
+  width: 58%;
+  height: 58%;
+  fill: #fff;
+}
+.ip-msgs.tap {
+  animation: ip-tap 0.35s ease;
+}
+@keyframes ip-tap {
+  50% {
+    transform: scale(0.84);
+    filter: brightness(0.85);
+  }
+}
+
+/* ---- Messages app (grows out of the dock icon) ---- */
+.ip-chat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--ip-paper);
+  border-radius: 2.2rem;
+  opacity: 0;
+  transform: scale(0.1);
+  pointer-events: none;
+  transition:
+    transform 1.4s cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 0.6s ease,
+    border-radius 1.4s ease;
+}
+.ip-chat.open {
+  opacity: 1;
+  transform: none;
+  border-radius: 0;
+  pointer-events: auto;
+}
+
+.ip-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.7rem 1rem 0.6rem;
+  background: rgba(243, 230, 207, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.ip-avatar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--ip-red);
+  color: var(--ip-paper);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.ip-name {
+  font-size: 0.8rem;
+  color: #2a1210;
+}
+
+.ip-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ip-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ip-bubble {
+  max-width: 72%;
+  padding: 0.6rem 0.95rem;
+  border-radius: 1.2rem;
+  font-size: clamp(0.9rem, 1.9vw, 1.1rem);
+  line-height: 1.35;
+  animation: ip-pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.ip-bubble.them {
+  align-self: flex-start;
+  background: #e9e1d2;
+  color: rgb(172, 35, 42);
+  border-bottom-left-radius: 0.3rem;
+  transform-origin: left bottom;
+}
+.ip-bubble.me {
+  align-self: flex-end;
+  background: var(--ip-red);
+  color: var(--ip-paper);
+  border-bottom-right-radius: 0.3rem;
+  transform-origin: right bottom;
+}
+@keyframes ip-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ip-typing {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.85rem 1rem;
+}
+.ip-typing span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ip-paper);
+  animation: ip-bounce 1.2s infinite ease-in-out;
+}
+.ip-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.ip-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes ip-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-0.35rem);
+    opacity: 1;
+  }
+}
+
+.ip-input {
+  margin: 0.4rem 1rem 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 1.4rem;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ip-home {
+    transition:
+      transform 1.4s ease,
+      filter 1.4s ease,
+      opacity 1.4s ease;
+  }
+  .ip-chat {
+    transition: none;
+  }
+  .ip-bubble,
+  .ip-typing span,
+  .ip-msgs.tap {
+    animation: ip-tap 0.5s ease;
+  }
+}
+
+.ip-chat:not(.open) {
+  transition-duration: 0.9s, 0.5s, 0.9s;
+}
+
+.ip-msgs {
+  position: relative;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.ip-msgs:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.ip-badge {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  animation: ip-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+/* ---- Automotive section: F1 car lane along the bottom ---- */
+.cars-lane {
+  position: relative;
+  width: 100%;
+  container-type: inline-size; /* lets the animation use cqw = lane width */
+  overflow-x: clip; /* cars slide in/out without a page scrollbar */
+}
+/* thin road line the cars drive on, in the theme cream */
+.cars-lane::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--cream, #f3e6cf);
+  opacity: 0.35;
+}
+
+/* ---------- F1: right -> left, with smoke ---------- */
+.f1-lane {
+  --car-w: clamp(8rem, 20vw, 14rem); /* was clamp(11rem, 28vw, 20rem) */
+  height: calc(var(--car-w) * 0.27 + 3rem);
+  margin-top: 2rem;
+}
+.f1 {
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: var(--car-w);
+  animation: f1-run 10s linear infinite;
+  will-change: transform;
+}
+.f1-body {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.18))
+    drop-shadow(9px 9px 0 rgba(0, 0, 0, 0.1));
+}
+@keyframes f1-run {
+  0% {
+    transform: translateX(100cqw);
+  }
+  75% {
+    transform: translateX(calc(var(--car-w) * -1.3));
+  } /* off the left edge */
+  100% {
+    transform: translateX(calc(var(--car-w) * -1.3));
+  } /* short pause */
+}
+
+/* spinning wheels: separate discs laid exactly over the wheels in the car picture */
+.f1-wheel {
+  position: absolute;
+  width: 11.51%;
+  aspect-ratio: 1;
+  height: auto;
+  animation: wheel-spin 0.55s linear infinite; /* car drives left, so wheels turn counter-clockwise */
+}
+.f1-wheel.front {
+  left: 15.94%;
+  top: 48.14%;
+}
+.f1-wheel.rear {
+  left: 81.35%;
+  top: 47.89%;
+}
+@keyframes wheel-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* smoke puffs trail from the rear (right side of the car) */
+.smoke {
+  position: absolute;
+  right: 0.2rem;
+  bottom: 14%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.smoke span {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(243, 230, 207, 0.45) 45%,
+    rgba(243, 230, 207, 0) 72%
+  );
+  filter: blur(1.5px);
+  opacity: 0;
+  animation: smoke 1.8s ease-out infinite;
+}
+@keyframes smoke {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  15% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(clamp(5rem, 12vw, 9rem), -1.8rem) scale(3.2);
+  }
+}
+
+/* hover on the F1 car: everything pauses, then carries on when the mouse leaves */
+@media (hover: hover) {
+  .f1 {
+    cursor: pointer;
+  }
+  .f1:hover,
+  .f1:hover .f1-wheel,
+  .f1:hover .smoke span {
+    animation-play-state: paused;
+  }
+}
+
+/* ---------- reduced motion: park the cars, no smoke ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .f1 {
+    animation: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .f1-wheel {
+    animation: none;
+  }
+  .smoke {
+    display: none;
+  }
+}
+
+/* ---- Ask Me Anything: iPad with Messages ---- */
+.ip {
+  --ip-red: rgb(172, 35, 42);
+  --ip-cream: #f3e6cf;
+  --ip-paper: #fbf6ec;
+  --ico: clamp(2.6rem, 7vw, 3.8rem);
+
+  /* fit the display: never wider than the column, and never taller than ~78% of the screen */
+  width: min(100%, 54rem, calc(78vh * 4 / 3));
+  width: min(100%, 54rem, calc(78svh * 4 / 3));
+  margin: 2rem auto 0;
+  aspect-ratio: 4 / 3;
+  padding: clamp(0.5rem, 1.6vw, 0.9rem);
+  background: #161617;
+  border-radius: clamp(1.4rem, 4vw, 2.4rem);
+  box-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.14),
+    9px 9px 0 rgba(0, 0, 0, 0.1),
+    14px 14px 0 rgba(0, 0, 0, 0.07);
+}
+@media (max-width: 700px) {
+  .ip {
+    aspect-ratio: 3 / 4;
+    width: min(100%, 26rem, calc(78vh * 3 / 4));
+    width: min(100%, 26rem, calc(78svh * 3 / 4));
+  }
+}
+
+/* the wallpaper fills the whole screen (public/ipadwallpaper.png) */
+.ip-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: clamp(0.9rem, 2.6vw, 1.6rem);
+  background:
+    url("/ipadwallpaper.png") center / cover no-repeat,
+    var(--ip-red);
+}
+
+/* ---- home screen: dock only ---- */
+.ip-home {
+  position: absolute;
+  inset: 0;
+  transition:
+    transform 1.4s ease,
+    filter 1.4s ease,
+    opacity 1.4s ease;
+}
+.ip-home.away {
+  transform: scale(0.92);
+  filter: blur(3px);
+  opacity: 0.5;
+}
+
+.ip-dock {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  padding: 0.55rem 0.7rem;
+  border-radius: 1.7rem;
+  background: rgba(243, 230, 207, 0.28);
+  backdrop-filter: blur(10px);
+}
+
+.ip-app {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--ico);
+  height: var(--ico);
+  border: 0;
+  padding: 0;
+  border-radius: 22%;
+  box-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.14),
+    4px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.ip-app svg {
+  width: 58%;
+  height: 58%;
+}
+
+.ip-msgs {
+  background: linear-gradient(#5be26f, #20b43b);
+  cursor: pointer;
+}
+.ip-phone {
+  background: linear-gradient(#5be26f, #20b43b);
+}
+.ip-safari {
+  background: linear-gradient(#5ac8fa, #0a7aff);
+}
+.ip-camera {
+  background: linear-gradient(#e5e5ea, #9a9aa1);
+}
+.ip-camera svg {
+  width: 66%;
+  height: 66%;
+}
+
+.ip-msgs:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+.ip-msgs.tap {
+  animation: ip-tap 0.5s ease;
+}
+@keyframes ip-tap {
+  50% {
+    transform: scale(0.84);
+    filter: brightness(0.85);
+  }
+}
+
+.ip-badge {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  animation: ip-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+/* ---- Messages app (grows out of the dock icon) ---- */
+.ip-chat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--ip-paper);
+  border-radius: 2.2rem;
+  opacity: 0;
+  transform: scale(0.1);
+  pointer-events: none;
+  transition:
+    transform 1.4s cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 0.6s ease,
+    border-radius 1.4s ease;
+}
+.ip-chat.open {
+  opacity: 1;
+  transform: none;
+  border-radius: 0;
+  pointer-events: auto;
+}
+
+.ip-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.7rem 1rem 0.6rem;
+  background: rgba(243, 230, 207, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.ip-avatar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--ip-red);
+  color: var(--ip-paper);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.ip-name {
+  font-size: 0.8rem;
+  color: #2a1210;
+}
+
+.ip-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ip-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ip-bubble {
+  max-width: 72%;
+  padding: 0.6rem 0.95rem;
+  border-radius: 1.2rem;
+  font-size: clamp(0.9rem, 1.9vw, 1.1rem);
+  line-height: 1.35;
+  animation: ip-pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.ip-bubble.them {
+  align-self: flex-start;
+  background: #e9e1d2;
+  color: rgb(172, 35, 42);
+  border-bottom-left-radius: 0.3rem;
+  transform-origin: left bottom;
+}
+.ip-bubble.me {
+  align-self: flex-end;
+  background: var(--ip-red);
+  color: var(--ip-paper);
+  border-bottom-right-radius: 0.3rem;
+  transform-origin: right bottom;
+}
+@keyframes ip-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ip-typing {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.85rem 1rem;
+}
+.ip-typing span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ip-paper);
+  animation: ip-bounce 1.2s infinite ease-in-out;
+}
+.ip-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.ip-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes ip-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-0.35rem);
+    opacity: 1;
+  }
+}
+
+.ip-input {
+  margin: 0.4rem 1rem 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 1.4rem;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ip-home,
+  .ip-chat {
+    transition: none;
+  }
+  .ip-bubble,
+  .ip-typing span,
+  .ip-msgs.tap,
+  .ip-badge {
+    animation: none;
+  }
+}
+
+Claude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Facts cars · CSS
+/* ---- Automotive section: F1 car lane along the bottom ---- */
+.automotive {
+  overflow-x: clip;
+} /* the full-width road never causes a sideways scrollbar */
+
+.cars-lane {
+  position: relative;
+  width: 100vw; /* road runs display to display ... */
+  margin-inline: calc(50% - 50vw); /* ... even inside a narrower column */
+  container-type: inline-size; /* lets the animation use cqw = lane width */
+  overflow-x: clip; /* cars slide in/out without a page scrollbar */
+}
+/* thin road line the cars drive on, in the theme cream */
+.cars-lane::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--cream, #f3e6cf);
+  opacity: 0.35;
+}
+
+/* ---------- F1: right -> left, with smoke ---------- */
+.f1-lane {
+  --car-w: clamp(10rem, 24vw, 17rem);
+  height: calc(var(--car-w) * 0.27 + 3rem); /* extra room above for the smoke */
+  margin-top: 2rem;
+}
+.f1 {
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  width: var(--car-w);
+  animation: f1-run 10s linear infinite;
+  will-change: transform;
+}
+.f1-body {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.18))
+    drop-shadow(9px 9px 0 rgba(0, 0, 0, 0.1));
+}
+@keyframes f1-run {
+  0% {
+    transform: translateX(100cqw);
+  }
+  75% {
+    transform: translateX(calc(var(--car-w) * -1.3));
+  } /* off the left edge */
+  100% {
+    transform: translateX(calc(var(--car-w) * -1.3));
+  } /* short pause */
+}
+
+/* spinning wheels: separate discs laid exactly over the wheels in the car picture */
+.f1-wheel {
+  position: absolute;
+  width: 11.51%;
+  aspect-ratio: 1;
+  height: auto;
+  animation: wheel-spin 0.55s linear infinite; /* car drives left, so wheels turn counter-clockwise */
+}
+.f1-wheel.front {
+  left: 15.94%;
+  top: 48.14%;
+}
+.f1-wheel.rear {
+  left: 81.35%;
+  top: 47.89%;
+}
+@keyframes wheel-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* smoke puffs trail from the rear (right side of the car) */
+.smoke {
+  position: absolute;
+  right: 0.2rem;
+  bottom: 14%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.smoke span {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(243, 230, 207, 0.45) 45%,
+    rgba(243, 230, 207, 0) 72%
+  );
+  filter: blur(1.5px);
+  opacity: 0;
+  animation: smoke 1.8s ease-out infinite;
+}
+@keyframes smoke {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  15% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(clamp(5rem, 12vw, 9rem), -1.8rem) scale(3.2);
+  }
+}
+
+/* ---------- reduced motion: park the cars, no smoke ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .f1 {
+    animation: none;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .f1-wheel {
+    animation: none;
+  }
+  .smoke {
+    display: none;
+  }
+}
+
+/* ---- Hero: reactor power-on and HUD "Welcome" ---- */
+/* Timeline (starts when the hero gets .play):
+   0.0s reactor flickers on and glows   1.2s letters appear one by one
+   2.7s "TO MY PERSONAL WEBSITE" fades in */
+
+/* 1) reactor power-on */
+.hero-power {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  opacity: 0.12;
+}
+.hero.play .hero-power {
+  animation: hero-power 1.9s ease-out both;
+}
+@keyframes hero-power {
+  0% {
+    opacity: 0.12;
+    filter: brightness(0.5);
+  }
+  10% {
+    opacity: 1;
+    filter: brightness(1.9) drop-shadow(0 0 1.4rem rgba(243, 230, 207, 0.9));
+  }
+  16% {
+    opacity: 0.25;
+    filter: brightness(0.7);
+  }
+  30% {
+    opacity: 1;
+    filter: brightness(1.6) drop-shadow(0 0 1.2rem rgba(243, 230, 207, 0.8));
+  }
+  38% {
+    opacity: 0.45;
+    filter: brightness(0.8);
+  }
+  52% {
+    opacity: 1;
+    filter: brightness(1.5) drop-shadow(0 0 1.6rem rgba(243, 230, 207, 0.95));
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 0.7rem rgba(243, 230, 207, 0.35));
+  }
+}
+
+/* 2) "Welcome" appears letter by letter, HUD style */
+.hud {
+  display: inline-block;
+}
+.ch {
+  display: inline-block;
+  opacity: 0;
+}
+.hero.play .ch {
+  animation: hud-in 0.55s ease-out both;
+  animation-delay: calc(1.2s + var(--i) * 0.11s);
+}
+@keyframes hud-in {
+  0% {
+    opacity: 0;
+    transform: translateY(0.25em) scale(0.9);
+    filter: blur(6px);
+  }
+  40% {
+    opacity: 1;
+    filter: blur(0);
+    text-shadow: 0 0 0.5em rgba(243, 230, 207, 0.9);
+  }
+  55% {
+    opacity: 0.35;
+  } /* quick HUD flicker */
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    text-shadow: 0 0 0 rgba(243, 230, 207, 0);
+  }
+}
+
+.hero-sub {
+  opacity: 0;
+}
+.hero.play .hero-sub {
+  animation: hero-sub-in 0.8s ease-out 2.7s both;
+}
+@keyframes hero-sub-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* reduced motion: everything is simply there */
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-power,
+  .hero.play .hero-power {
+    opacity: 1;
+    animation: none;
+  }
+  .hero .ch,
+  .hero.play .ch {
+    opacity: 1;
+    animation: none;
+  }
+  .hero .hero-sub,
+  .hero.play .hero-sub {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ---- Intro Chat: iPad with Messages window ---- */
+.ip {
+  --ip-red: rgb(172, 35, 42);
+  --ip-cream: #f3e6cf;
+  --ip-paper: #fbf6ec;
+  --ico: clamp(2.4rem, 6vw, 3.6rem);
+
+  /* fit the display: never wider than the column, never taller than ~78% of the screen */
+  width: min(100%, 54rem, calc(78vh * 4 / 3));
+  width: min(100%, 54rem, calc(78svh * 4 / 3));
+  margin: 2rem auto 0;
+  aspect-ratio: 4 / 3;
+  padding: clamp(0.5rem, 1.6vw, 0.9rem);
+  background: #161617;
+  border-radius: clamp(1.4rem, 4vw, 2.4rem);
+  box-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.14),
+    9px 9px 0 rgba(0, 0, 0, 0.1),
+    14px 14px 0 rgba(0, 0, 0, 0.07);
+}
+@media (max-width: 700px) {
+  .ip {
+    aspect-ratio: 3 / 4;
+    width: min(100%, 26rem, calc(78vh * 3 / 4));
+    width: min(100%, 26rem, calc(78svh * 3 / 4));
+  }
+}
+
+/* wallpaper fills the whole screen (public/ipadwallpaper.png) */
+.ip-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: clamp(0.9rem, 2.6vw, 1.6rem);
+  background:
+    url("/ipadwallpaper.png") center / cover no-repeat,
+    var(--ip-red);
+}
+
+/* ---- home screen: dock only ---- */
+.ip-home {
+  position: absolute;
+  inset: 0;
+}
+
+.ip-dock {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: clamp(0.4rem, 1.6vw, 0.9rem);
+  padding: 0.55rem 0.7rem;
+  border-radius: 1.7rem;
+  background: rgba(243, 230, 207, 0.28);
+  backdrop-filter: blur(10px);
+}
+
+.ip-app {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--ico);
+  height: var(--ico);
+  border: 0;
+  padding: 0;
+  border-radius: 22%;
+  box-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.14),
+    4px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.ip-app svg {
+  width: 58%;
+  height: 58%;
+}
+
+.ip-phone {
+  background: linear-gradient(#5be26f, #20b43b);
+}
+.ip-msgs {
+  background: linear-gradient(#5be26f, #20b43b);
+  cursor: pointer;
+}
+.ip-spotify {
+  background: #121212;
+}
+.ip-spotify svg {
+  width: 68%;
+  height: 68%;
+}
+.ip-safari {
+  background: linear-gradient(#5ac8fa, #0a7aff);
+}
+.ip-camera {
+  background: linear-gradient(#e5e5ea, #9a9aa1);
+}
+.ip-camera svg {
+  width: 66%;
+  height: 66%;
+}
+
+.ip-msgs:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+.ip-msgs.tap {
+  animation: ip-tap 0.5s ease;
+}
+@keyframes ip-tap {
+  50% {
+    transform: scale(0.84);
+    filter: brightness(0.85);
+  }
+}
+
+.ip-badge {
+  position: absolute;
+  top: -0.35rem;
+  right: -0.35rem;
+  min-width: 1.15rem;
+  height: 1.15rem;
+  padding: 0 0.3rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #ff3b30;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  animation: ip-pop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+/* little dot under an app that is open or minimised */
+.ip-run {
+  position: absolute;
+  bottom: -0.45rem;
+  left: 50%;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-left: -0.15rem;
+  border-radius: 50%;
+  background: var(--ip-cream);
+}
+
+/* ---- Messages window: sits above the dock; maximise fills the screen ---- */
+.ip-chat {
+  position: absolute;
+  top: 4%;
+  left: 6%;
+  right: 6%;
+  bottom: calc(4% + var(--ico) + 1.9rem); /* leaves the dock visible */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--ip-paper);
+  border-radius: 2.2rem;
+  opacity: 0;
+  transform: scale(0.1);
+  pointer-events: none;
+  transition:
+    transform 1.4s cubic-bezier(0.22, 0.8, 0.24, 1),
+    opacity 0.6s ease,
+    top 0.7s ease,
+    left 0.7s ease,
+    right 0.7s ease,
+    bottom 0.7s ease,
+    border-radius 0.7s ease,
+    box-shadow 0.7s ease;
+}
+.ip-chat.open {
+  opacity: 1;
+  transform: none;
+  border-radius: 1.1rem;
+  pointer-events: auto;
+  box-shadow:
+    3px 3px 0 rgba(0, 0, 0, 0.18),
+    6px 6px 0 rgba(0, 0, 0, 0.1),
+    10px 10px 0 rgba(0, 0, 0, 0.06);
+}
+.ip-chat.open.max {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.ip-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.7rem 1rem 0.6rem;
+  background: rgba(243, 230, 207, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* close / minimise / maximise */
+.ip-ctl {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.9rem;
+  display: flex;
+  gap: 0.45rem;
+}
+.ip-ctl button {
+  position: relative;
+  width: 0.8rem;
+  height: 0.8rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.ip-ctl button::before {
+  content: "";
+  position: absolute;
+  inset: -0.35rem;
+} /* bigger tap area */
+.ip-ctl .c {
+  background: #ff5f57;
+}
+.ip-ctl .m {
+  background: #febc2e;
+}
+.ip-ctl .x {
+  background: #28c840;
+}
+.ip-ctl svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.ip-ctl svg path {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.55);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+.ip-ctl:hover svg,
+.ip-ctl button:focus-visible svg {
+  opacity: 1;
+}
+.ip-ctl button:focus-visible {
+  outline: 2px solid #2a1210;
+  outline-offset: 2px;
+}
+
+.ip-avatar {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--ip-red);
+  color: var(--ip-paper);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.ip-name {
+  font-size: 0.8rem;
+  color: #2a1210;
+}
+
+.ip-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.ip-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ip-bubble {
+  max-width: 72%;
+  padding: 0.6rem 0.95rem;
+  border-radius: 1.2rem;
+  font-size: clamp(0.9rem, 1.9vw, 1.1rem);
+  line-height: 1.35;
+  animation: ip-pop 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+.ip-bubble.them {
+  align-self: flex-start;
+  background: #e9e1d2;
+  color: rgb(172, 35, 42);
+  border-bottom-left-radius: 0.3rem;
+  transform-origin: left bottom;
+}
+.ip-bubble.me {
+  align-self: flex-end;
+  background: var(--ip-red);
+  color: var(--ip-paper);
+  border-bottom-right-radius: 0.3rem;
+  transform-origin: right bottom;
+}
+@keyframes ip-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ip-typing {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.85rem 1rem;
+}
+.ip-typing span {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ip-paper);
+  animation: ip-bounce 1.2s infinite ease-in-out;
+}
+.ip-typing span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.ip-typing span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes ip-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-0.35rem);
+    opacity: 1;
+  }
+}
+
+.ip-input {
+  margin: 0.4rem 1rem 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 1.4rem;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ip-chat {
+    transition: none;
+  }
+  .ip-bubble,
+  .ip-typing span,
+  .ip-msgs.tap,
+  .ip-badge {
+    animation: none;
+  }
+}
