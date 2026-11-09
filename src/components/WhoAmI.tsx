@@ -21,6 +21,17 @@ export function WhoAmI() {
           )
         }
       />
+      <aside
+        className="now-playing"
+        aria-label="Now playing: Till I Collapse by Eminem"
+      >
+        <span className="now-playing-bars" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+        <span>Now Playing: Till I Collapse - Eminem</span>
+      </aside>
     </section>
   );
 }

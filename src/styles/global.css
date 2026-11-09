@@ -394,7 +394,20 @@ nav.menu .num {
   aspect-ratio: 1;
   transform: translateY(-50%);
   opacity: 0.16;
-  pointer-events: none;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.hero-ring:hover {
+  opacity: 0.3;
+}
+.hero-ring:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: -1rem;
+  border-radius: 50%;
 }
 .hero-ring svg {
   width: 100%;
@@ -416,63 +429,52 @@ nav.menu .num {
   font: 400 clamp(3.6rem, 15vw, 13rem)/0.9 var(--display);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  text-shadow:
-    0.007em 0.007em 0 #7b121a,
-    0.014em 0.014em 0 #7c131b,
-    0.021em 0.021em 0 #7d131b,
-    0.028em 0.028em 0 #7e131b,
-    0.035em 0.035em 0 #7e141b,
-    0.042em 0.042em 0 #7f141c,
-    0.049em 0.049em 0 #80141c,
-    0.056em 0.056em 0 #81141c,
-    0.063em 0.063em 0 #82151d,
-    0.07em 0.07em 0 #83151d,
-    0.077em 0.077em 0 #84151d,
-    0.084em 0.084em 0 #85161d,
-    0.091em 0.091em 0 #86161e,
-    0.098em 0.098em 0 #86161e,
-    0.105em 0.105em 0 #87171e,
-    0.112em 0.112em 0 #88171f,
-    0.119em 0.119em 0 #89171f,
-    0.126em 0.126em 0 #8a171f,
-    0.133em 0.133em 0 #8b181f,
-    0.14em 0.14em 0 #8c1820,
-    0.147em 0.147em 0 #8d1820,
-    0.154em 0.154em 0 #8e1920,
-    0.161em 0.161em 0 #8f1921,
-    0.168em 0.168em 0 #8f1921,
-    0.175em 0.175em 0 #901a21,
-    0.182em 0.182em 0 #911a21,
-    0.189em 0.189em 0 #921a22,
-    0.196em 0.196em 0 #931a22,
-    0.203em 0.203em 0 #941b22,
-    0.21em 0.21em 0 #951b23,
-    0.217em 0.217em 0 #961b23,
-    0.224em 0.224em 0 #971c23,
-    0.231em 0.231em 0 #971c23,
-    0.238em 0.238em 0 #981c24,
-    0.245em 0.245em 0 #991d24,
-    0.252em 0.252em 0 #9a1d24,
-    0.259em 0.259em 0 #9b1d25,
-    0.266em 0.266em 0 #9c1e25,
-    0.273em 0.273em 0 #9d1e25,
-    0.28em 0.28em 0 #9e1e25,
-    0.287em 0.287em 0 #9f1e26,
-    0.294em 0.294em 0 #a01f26,
-    0.301em 0.301em 0 #a01f26,
-    0.308em 0.308em 0 #a11f27,
-    0.315em 0.315em 0 #a22027,
-    0.322em 0.322em 0 #a32027,
-    0.329em 0.329em 0 #a42027,
-    0.336em 0.336em 0 #a52128,
-    0.343em 0.343em 0 #a62128,
-    0.35em 0.35em 0 #a72128,
-    0.357em 0.357em 0 #a82129,
-    0.364em 0.364em 0 #a82229,
-    0.371em 0.371em 0 #a92229,
-    0.378em 0.378em 0 #aa2229,
-    0.385em 0.385em 0 #ab232a,
-    0.392em 0.392em 0 #ac232a;
+  --hero-title-shadow:
+    0.011em 0.011em 0 #7b121a,
+    0.022em 0.022em 0 #7c131b,
+    0.033em 0.033em 0 #7d131b,
+    0.044em 0.044em 0 #7f141b,
+    0.055em 0.055em 0 #80141c,
+    0.066em 0.066em 0 #81141c,
+    0.077em 0.077em 0 #82151d,
+    0.088em 0.088em 0 #83151d,
+    0.099em 0.099em 0 #84151d,
+    0.11em 0.11em 0 #85161e,
+    0.121em 0.121em 0 #86161e,
+    0.132em 0.132em 0 #88171e,
+    0.143em 0.143em 0 #89171f,
+    0.154em 0.154em 0 #8a171f,
+    0.165em 0.165em 0 #8b181f,
+    0.176em 0.176em 0 #8c1820,
+    0.187em 0.187em 0 #8d1920,
+    0.198em 0.198em 0 #8e1921,
+    0.209em 0.209em 0 #901921,
+    0.22em 0.22em 0 #911a21,
+    0.231em 0.231em 0 #921a22,
+    0.242em 0.242em 0 #931a22,
+    0.253em 0.253em 0 #941b22,
+    0.264em 0.264em 0 #951b23,
+    0.275em 0.275em 0 #961c23,
+    0.286em 0.286em 0 #981c23,
+    0.297em 0.297em 0 #991c24,
+    0.308em 0.308em 0 #9a1d24,
+    0.319em 0.319em 0 #9b1d25,
+    0.33em 0.33em 0 #9c1e25,
+    0.341em 0.341em 0 #9d1e25,
+    0.352em 0.352em 0 #9e1e26,
+    0.363em 0.363em 0 #a01f26,
+    0.374em 0.374em 0 #a11f26,
+    0.385em 0.385em 0 #a22027,
+    0.396em 0.396em 0 #a32027,
+    0.407em 0.407em 0 #a42027,
+    0.418em 0.418em 0 #a52128,
+    0.429em 0.429em 0 #a62128,
+    0.44em 0.44em 0 #a72129,
+    0.451em 0.451em 0 #a92229,
+    0.462em 0.462em 0 #aa2229,
+    0.473em 0.473em 0 #ab232a,
+    0.484em 0.484em 0 #ac232a;
+  text-shadow: var(--hero-title-shadow);
 }
 .hero:not(.play) .hero-title,
 .hero:not(.play) .hero.play .hero-title {
@@ -648,7 +650,7 @@ footer {
   gap: 1rem;
   padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
   border-top: 1px solid var(--line);
-  color: var(--acc);
+  color: var(--ink);
 }
 @media (prefers-reduced-motion: reduce) {
   html {

@@ -11,7 +11,7 @@ import { site } from "./data/site";
 import { useReducedMotion } from "./hooks/useReducedMotion";
 import { Favorites } from "./components/Favorites";
 import { Automotive } from "./components/Automotive";
-import { Contact } from "./components/Contact";
+import { SocialSidebar } from "./components/SocialSidebar";
 
 export default function App() {
   const reduced = useReducedMotion();
@@ -54,7 +54,7 @@ export default function App() {
         <Favorites />
         <Automotive />
       </main>
-      <Contact />
+      <SocialSidebar />
       <Footer />
       <BackToTop />
     </>

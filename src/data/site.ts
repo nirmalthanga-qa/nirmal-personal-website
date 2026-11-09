@@ -41,7 +41,7 @@ export const site = {
     personality: "INTJ-A",
   },
   favorites: {
-    god: { name: "கந்தன் இருக்க பயமேன்" },
+    god: { name: "அருள்மிகு முருகன்" },
     color: { name: "Red" },
     food: "Kothu Parotta",
     beverage: "Cafe Mocha",
@@ -82,6 +82,5 @@ export const site = {
     { id: "facts", label: "Intro Chat" },
     { id: "favorites", label: "Favorites" },
     { id: "automotive", label: "Automotive" },
-    { id: "contact", label: "Contact" },
   ],
 };

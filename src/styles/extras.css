@@ -13,6 +13,62 @@
   display: none;
 }
 
+.now-playing {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.65rem;
+  margin-top: auto;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-deep);
+  color: var(--ink);
+  font: 600 0.72rem/1.2 var(--body);
+  letter-spacing: 0.04em;
+  animation: now-playing-in 0.6s ease both;
+}
+
+.now-playing-bars {
+  display: inline-flex;
+  height: 0.8rem;
+  align-items: center;
+  gap: 2px;
+}
+
+.now-playing-bars span {
+  width: 2px;
+  height: 35%;
+  border-radius: 2px;
+  background: var(--acc);
+  animation: now-playing-equalizer 0.8s ease-in-out infinite alternate;
+}
+
+.now-playing-bars span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.now-playing-bars span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes now-playing-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes now-playing-equalizer {
+  to {
+    height: 100%;
+  }
+}
+
 .icons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -431,13 +487,16 @@ body.menu .top {
     min-height: auto;
   }
 
+  .now-playing {
+    margin-top: 2rem;
+  }
+
   .icons {
     grid-template-columns: 1fr;
     justify-items: center;
     gap: clamp(1.25rem, 4vw, 1.75rem);
     margin-top: clamp(1.5rem, 4vw, 2rem);
   }
-
   .ico {
     --size: clamp(110px, 32vw, 140px);
     width: var(--size);
@@ -453,6 +512,16 @@ body.menu .top {
   }
   .ico.r {
     --from: translateY(60px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .now-playing,
+  .now-playing-bars span {
+    animation: none;
+  }
+
+  .now-playing-bars span {
+    height: 65%;
   }
 }
 @media (max-width: 360px) {
@@ -1090,37 +1159,45 @@ body.menu .top {
     min-width: 0;
   }
 }
-/* Contact Section */
-.contact {
-  min-height: 50svh;
+/* Social sidebar */
+.social-sidebar {
+  position: fixed;
+  left: max(1rem, env(safe-area-inset-left, 0px));
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  z-index: 35;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.contact-links {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.social-btn {
-  display: inline-flex;
-  align-items: center;
   gap: 0.75rem;
-  padding: 1rem 1.75rem;
-  border-radius: 999px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0s linear 0.2s;
+}
+
+.social-sidebar.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    visibility 0s;
+}
+
+.social-link {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border-radius: 50%;
   border: 1px solid rgba(217, 199, 127, 0.3);
-  background: rgba(217, 199, 127, 0.05);
+  background: var(--bg-deep);
   color: var(--acc);
-  text-decoration: none;
-  font: 600 1rem/1 var(--body);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
   box-shadow: 4px 5px 0 var(--shadow);
   transition:
     transform 0.2s ease,
@@ -1128,9 +1205,9 @@ body.menu .top {
     background 0.2s ease;
 }
 
-.social-btn svg {
-  width: 24px;
-  height: 24px;
+.social-link svg {
+  width: 22px;
+  height: 22px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -1138,13 +1215,13 @@ body.menu .top {
   stroke-linejoin: round;
 }
 
-.social-btn svg .dot {
+.social-link svg .dot {
   fill: currentColor;
   stroke: none;
 }
 
-.social-btn:hover,
-.social-btn:focus-visible {
+.social-link:hover,
+.social-link:focus-visible {
   transform: translate(-2px, -2px);
   box-shadow: 7px 8px 0 var(--shadow);
   background: rgba(217, 199, 127, 0.1);
@@ -2247,7 +2324,9 @@ Facts cars · CSS
   40% {
     opacity: 1;
     filter: blur(0);
-    text-shadow: 0 0 0.5em rgba(243, 230, 207, 0.9);
+    text-shadow:
+      var(--hero-title-shadow),
+      0 0 0.5em rgba(243, 230, 207, 0.9);
   }
   55% {
     opacity: 0.35;
@@ -2259,7 +2338,9 @@ Facts cars · CSS
     opacity: 1;
     transform: none;
     filter: blur(0);
-    text-shadow: 0 0 0 rgba(243, 230, 207, 0);
+    text-shadow:
+      var(--hero-title-shadow),
+      0 0 0 rgba(243, 230, 207, 0);
   }
 }
 

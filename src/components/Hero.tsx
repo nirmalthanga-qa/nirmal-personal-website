@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { CSSProperties } from "react";
 import { site } from "../data/site";
 import { HeroRing } from "./ReactorIcon";
@@ -5,6 +6,7 @@ import { HeroRing } from "./ReactorIcon";
 /** Landing section: reactor powers on, then "Welcome" types in like a HUD. */
 export function Hero({ play = true }: { play?: boolean }) {
   const title = site.welcome.title;
+  const [powerReplay, setPowerReplay] = useState(0);
 
   return (
     <section
@@ -12,12 +14,17 @@ export function Hero({ play = true }: { play?: boolean }) {
       id="top"
       aria-labelledby="hero-title"
     >
-      <div className="hero-ring" aria-hidden="true">
-        {/* inner wrapper carries the power-on animation, so your ring's own animation is untouched */}
-        <div className="hero-power">
+      <button
+        className="hero-ring"
+        type="button"
+        aria-label="Replay reactor power-on flash"
+        onClick={() => setPowerReplay((replay) => replay + 1)}
+      >
+        {/* Remount the animated layer to replay its power-on animation. */}
+        <div className="hero-power" key={powerReplay}>
           <HeroRing />
         </div>
-      </div>
+      </button>
 
       <div className="hero-in">
         <h1 className="hero-title" id="hero-title">
