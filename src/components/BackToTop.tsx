@@ -14,7 +14,6 @@ export function BackToTop() {
       raf = 0;
       setVisible(window.scrollY > window.innerHeight * 0.8);
       const footer = document.querySelector('footer');
-      const carLane = document.querySelector('.f1-lane');
       const el = ref.current;
       if (el) {
         el.style.setProperty('--lift', '0px');
@@ -22,16 +21,6 @@ export function BackToTop() {
         let lift = footer
           ? Math.max(0, window.innerHeight - footer.getBoundingClientRect().top)
           : 0;
-        const laneRect = carLane?.getBoundingClientRect();
-        const liftedTop = buttonRect.top - lift;
-        const liftedBottom = buttonRect.bottom - lift;
-        if (
-          laneRect &&
-          liftedBottom > laneRect.top &&
-          liftedTop < laneRect.bottom
-        ) {
-          lift += liftedBottom - laneRect.top + 12;
-        }
         lift = Math.min(lift, Math.max(0, window.innerHeight - buttonRect.height - 40));
         el.style.setProperty('--lift', `${Math.round(lift)}px`);
       }
