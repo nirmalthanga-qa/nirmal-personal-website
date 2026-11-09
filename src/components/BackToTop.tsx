@@ -14,10 +14,24 @@ export function BackToTop() {
       raf = 0;
       setVisible(window.scrollY > window.innerHeight * 0.8);
       const footer = document.querySelector('footer');
+      const carLane = document.querySelector('.f1-lane');
       const el = ref.current;
-      if (footer && el) {
-        const overlap = Math.max(0, window.innerHeight - footer.getBoundingClientRect().top);
-        el.style.setProperty('--lift', `${Math.round(overlap)}px`);
+      if (el) {
+        let lift = footer
+          ? Math.max(0, window.innerHeight - footer.getBoundingClientRect().top)
+          : 0;
+        el.style.setProperty('--lift', `${Math.round(lift)}px`);
+
+        const buttonRect = el.getBoundingClientRect();
+        const laneRect = carLane?.getBoundingClientRect();
+        if (
+          laneRect &&
+          buttonRect.bottom > laneRect.top &&
+          buttonRect.top < laneRect.bottom
+        ) {
+          lift += buttonRect.bottom - laneRect.top + 12;
+          el.style.setProperty('--lift', `${Math.round(lift)}px`);
+        }
       }
     };
     const onScroll = () => {

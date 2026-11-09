@@ -5,25 +5,15 @@ export function SocialSidebar() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let frame = 0;
-    const updateVisibility = () => {
-      frame = 0;
-      const { scrollHeight } = document.documentElement;
-      setVisible(window.scrollY + window.innerHeight >= scrollHeight - 80);
-    };
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(updateVisibility);
-    };
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
 
-    updateVisibility();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      window.cancelAnimationFrame(frame);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   return (
