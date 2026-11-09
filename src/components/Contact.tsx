@@ -8,8 +8,10 @@ export function Contact() {
       id="contact"
       aria-labelledby="contact-title"
     >
-      <Reveal as="h2" id="contact-title">
-        <span className="hl">Let's</span> Connect
+      <Reveal as="h2">
+        <span id="contact-title">
+          <span className="hl">Let's</span> Connect
+        </span>
       </Reveal>
 
       <Reveal delay={0.1} className="contact-links">

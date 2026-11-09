@@ -41,7 +41,7 @@ export const site = {
     personality: "INTJ-A",
   },
   favorites: {
-    god: { name: "Lord Murugan" },
+    god: { name: "கந்தன் இருக்க பயமேன்" },
     color: { name: "Red" },
     food: "Kothu Parotta",
     beverage: "Cafe Mocha",

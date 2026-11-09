@@ -1,17 +1,17 @@
 import { site } from "../data/site";
 import { Reveal } from "./Reveal";
-import { Vel } from "./Vel";
+import { Vel } from "./vel";
 
 /** Small swatch for the colour row — filled circle tinted with the named colour. */
-function ColorDot({ color }: { color: string }) {
-  return (
-    <span
-      className="fav-dot"
-      style={{ background: color }}
-      aria-hidden="true"
-    />
-  );
-}
+// function ColorDot({ color }: { color: string }) {
+//   return (
+//     <span
+//       className="fav-dot"
+//       style={{ background: color }}
+//       aria-hidden="true"
+//     />
+//   );
+// }
 
 interface Row {
   key: string;
@@ -29,6 +29,7 @@ export function Favorites() {
       key: "color",
       label: "Color",
       value: favorites.color.name,
+      // extra: <ColorDot color={favorites.color.name} />,
     },
     { key: "food", label: "Food", value: favorites.food },
     { key: "beverage", label: "Beverage", value: favorites.beverage },
