@@ -221,6 +221,11 @@ footer {
     transform 0.3s,
     visibility 0s 0.3s;
 }
+@media (max-width: 640px) {
+  .top {
+    width: 36px;
+  }
+}
 .top.show {
   opacity: 1;
   visibility: visible;
