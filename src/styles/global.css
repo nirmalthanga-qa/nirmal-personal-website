@@ -399,6 +399,7 @@ nav.menu .num {
   color: inherit;
   background: transparent;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: opacity 0.2s ease;
 }
 .hero-ring:hover {
