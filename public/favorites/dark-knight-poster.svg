@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#fff5df"/>
+      <stop offset="1" stop-color="#ead5ad"/>
+    </linearGradient>
+    <linearGradient id="red" x2="1" y2="1">
+      <stop stop-color="#e44848"/>
+      <stop offset="1" stop-color="#941e27"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="840" fill="#92744d"/>
+  <rect x="17" y="17" width="566" height="806" fill="#d4b989"/>
+  <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
+  <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="170" text-anchor="middle" fill="#271c17" font-family="Arial,sans-serif" font-size="57" font-weight="800" letter-spacing="-2">THE DARK KNIGHT</text>
+  <text x="300" y="207" fill="#34251d" font-family="Arial,sans-serif" font-size="20" font-weight="600" text-anchor="middle">TRILOGY</text>
+  <rect x="58" y="259" width="484" height="472" fill="url(#red)"/>
+  <path d="M58 559h484v172H58z" fill="#601c23" opacity=".58"/>
+  <path d="M75 558V423h50v135m15 0V369h68v189m14 0V447h46v111m20 0V338h72v220m15 0V412h55v146m17 0V379h57v179m17 0V450h22v108" fill="#681d25"/>
+  <path d="M87 444h12m-12 22h12m-12 22h12m38-102h14m-14 22h14m-14 22h14m34-43h15m-15 22h15m20 67h12m-12 22h12m41-128h16m-16 22h16m-16 22h16m45 21h14m-14 22h14m34-79h14m-14 22h14m-14 22h14m34-51h13m-13 22h13m-13 22h13" fill="none" stroke="#e9b879" stroke-width="6" opacity=".75"/>
+  <path d="M58 635 185 523l91 74 105-127 161 145v116H58z" fill="#f3d9b0" opacity=".18"/>
+  <path d="M82 628h436" stroke="#f3d9b0" stroke-width="2" opacity=".6"/>
+  <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="3">BEGIN  •  FALL  •  RISE</text>
+</svg>

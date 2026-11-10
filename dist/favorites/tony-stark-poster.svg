@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#fff5df"/>
+      <stop offset="1" stop-color="#ead5ad"/>
+    </linearGradient>
+    <linearGradient id="red" x2="1" y2="1">
+      <stop stop-color="#e44848"/>
+      <stop offset="1" stop-color="#941e27"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="840" fill="#92744d"/>
+  <rect x="17" y="17" width="566" height="806" fill="#d4b989"/>
+  <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
+  <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="174" text-anchor="middle" fill="#271c17" font-family="Arial,sans-serif" font-size="66" font-weight="800" letter-spacing="-2">TONY STARK</text>
+  <text x="300" y="211" fill="#34251d" font-family="Arial,sans-serif" font-size="17" font-weight="600" text-anchor="middle">Billionaire, Playboy, Philanthropist</text>
+  <rect x="58" y="259" width="484" height="472" fill="url(#red)"/>
+  <path d="M58 632 190 500l82 63 102-141 168 137v172H58z" fill="#64181f" opacity=".6"/>
+  <g fill="none" stroke="#f3d9b0" stroke-width="2" opacity=".55">
+    <path d="M93 335h88l27 27v45m299-46h-69l-31 31v54M88 599h72l33-33h50m269 32h-91l-29-29h-46"/>
+    <circle cx="93" cy="335" r="5" fill="#f3d9b0"/><circle cx="507" cy="361" r="5" fill="#f3d9b0"/>
+    <circle cx="88" cy="599" r="5" fill="#f3d9b0"/><circle cx="512" cy="598" r="5" fill="#f3d9b0"/>
+  </g>
+  <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2">LOVE YOU, 3000</text>
+</svg>

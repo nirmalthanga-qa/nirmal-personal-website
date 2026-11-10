@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#fff5df"/>
+      <stop offset="1" stop-color="#ead5ad"/>
+    </linearGradient>
+    <linearGradient id="red" x2="1" y2="1">
+      <stop stop-color="#e44848"/>
+      <stop offset="1" stop-color="#941e27"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="840" fill="#92744d"/>
+  <rect x="17" y="17" width="566" height="806" fill="#d4b989"/>
+  <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
+  <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="174" text-anchor="middle" fill="#271c17" font-family="Arial,sans-serif" font-size="65" font-weight="800" letter-spacing="-2">HILL STATIONS</text>
+  <text x="300" y="211" text-anchor="middle" fill="#34251d" font-family="Arial,sans-serif" font-size="20" font-weight="600">Reaching new heights.</text>
+  <rect x="58" y="259" width="484" height="472" fill="url(#red)"/>
+  <circle cx="419" cy="365" r="43" fill="#f3d9b0"/>
+  <path d="m58 522 135-151 79 92 94-122 176 173v209H58z" fill="#6c1a22"/>
+  <path d="m58 546 131-137 72 92 99-127 182 164v193H58z" fill="#8f222a"/>
+  <path d="m100 493 93-122 79 92-41-16-37 14-24-17-40 44zm198-27 68-147 75 119-35-20-26 8-24-17-24 18z" fill="#f3d9b0" opacity=".85"/>
+  <path d="M58 579q103-36 202 0t282-8v160H58z" fill="#651920"/>
+  <path d="M58 628q108-23 213 6t271-8v105H58z" fill="#d7a96d"/>
+  <path d="M58 661q111-27 216 4t268-5v71H58z" fill="#861e27"/>
+  <path d="M83 679q94-20 174 5m18-9q79 18 174 0m-264 36q113-20 208 6m14-6q67 12 113-1" fill="none" stroke="#f3d9b0" stroke-width="4" opacity=".62"/>
+  <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="3">QUIET  •  HEIGHT  •  HORIZON</text>
+</svg>

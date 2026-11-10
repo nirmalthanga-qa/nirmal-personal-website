@@ -6,9 +6,21 @@
   --line: #8a1a21;
   --acc: #d9c77f;
   --shadow: #7a121a;
+  --reactor: var(--acc);
+  --cream: var(--ink);
   --display: "Bebas Neue", "Oswald", "Arial Narrow", Impact, sans-serif;
   --body: "Figtree", "Segoe UI", system-ui, sans-serif;
   color-scheme: dark;
+}
+:root[data-theme="dark"] {
+  --bg: #120e0f;
+  --bg-deep: #1c1517;
+  --ink: #f3e9d2;
+  --muted: #b9a98b;
+  --line: #453337;
+  --acc: #d4bf80;
+  --shadow: #080607;
+  --reactor: #c8323a;
 }
 *,
 *::before,
@@ -244,6 +256,44 @@ body.intro .hd {
   cursor: pointer;
   color: var(--ink);
 }
+.hd-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg-deep);
+  color: var(--acc);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+.theme-toggle-bat {
+  width: 25px;
+  aspect-ratio: 2.5;
+  display: block;
+  background: #d4bf80;
+  -webkit-mask: url("/darkknight.png") center / contain no-repeat;
+  mask: url("/darkknight.png") center / contain no-repeat;
+}
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  background: var(--bg-deep);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+}
 .burger svg,
 .burger-img {
   position: absolute;
@@ -263,6 +313,20 @@ body.intro .hd {
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
+}
+.burger .burger-core {
+  inset: 18%;
+  width: 64%;
+  height: 64%;
+}
+.burger-core {
+  position: absolute;
+  inset: 18%;
+  width: 64%;
+  height: 64%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 4px var(--reactor));
 }
 .r-seg {
   transform-origin: 26px 26px;
@@ -427,12 +491,15 @@ nav.menu .num {
   max-width: 1180px;
   margin: 0 auto;
 }
-.hero-title {
-  margin: 0;
-  color: var(--acc);
+.hero-title,
+.hero-sub {
   font: 400 clamp(3.6rem, 15vw, 13rem)/0.9 var(--display);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+.hero-title {
+  margin: 0;
+  color: var(--acc);
   --hero-title-shadow:
     0.011em 0.011em 0 #7b121a,
     0.022em 0.022em 0 #7c131b,
@@ -485,7 +552,8 @@ nav.menu .num {
   animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 @media (max-width: 560px) {
-  .hero-title {
+  .hero-title,
+  .hero-sub {
     font-size: clamp(4rem, 18vw, 7rem);
   }
 }

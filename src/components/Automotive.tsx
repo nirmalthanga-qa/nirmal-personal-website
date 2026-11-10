@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { site } from "../data/site";
 import { Reveal } from "./Reveal";
 
@@ -87,6 +88,7 @@ function BrandIcon({
 
 export function Automotive() {
   const { automotive } = site;
+  const [showRacer, setShowRacer] = useState(false);
 
   return (
     <section
@@ -102,9 +104,37 @@ export function Automotive() {
         <span className="auto-fav-name">{automotive.favoriteBrand}</span>
       </Reveal>
 
+      <div className="cars-lane f1-lane">
+        <div
+          className="f1-racer"
+          id="f1-racer"
+          role="status"
+          hidden={!showRacer}
+        >
+          FAVORITE RACER: MAX VERSTAPPEN
+        </div>
+        <button
+          className="f1"
+          type="button"
+          aria-label="Show or hide favorite racer: Max Verstappen"
+          aria-expanded={showRacer}
+          aria-controls="f1-racer"
+          onClick={() => setShowRacer((shown) => !shown)}
+        >
+          <img className="f1-body" src="/f1-car.png" alt="" />
+          <img className="f1-wheel front" src="/f1-wheel-front.png" alt="" />
+          <img className="f1-wheel rear" src="/f1-wheel-rear.png" alt="" />
+          <span className="smoke" aria-hidden="true">
+            {Array.from({ length: 7 }).map((_, k) => (
+              <span key={k} style={{ animationDelay: `${k * 0.22}s` }} />
+            ))}
+          </span>
+        </button>
+      </div>
+
       {/* Top 5 */}
       <Reveal as="h3" className="auto-top-title" delay={0.1}>
-        My Top 5 Cars of All-time
+        Top 5 Favorite Cars of All-time
       </Reveal>
 
       <ol className="auto-cars">
@@ -122,20 +152,6 @@ export function Automotive() {
           </Reveal>
         ))}
       </ol>
-
-      {/* F1 car drives right to left along the bottom, wheels spinning */}
-      <div className="cars-lane f1-lane" aria-hidden="true">
-        <div className="f1">
-          <img className="f1-body" src="/f1-car.png" alt="" />
-          <img className="f1-wheel front" src="/f1-wheel-front.png" alt="" />
-          <img className="f1-wheel rear" src="/f1-wheel-rear.png" alt="" />
-          <span className="smoke">
-            {Array.from({ length: 7 }).map((_, k) => (
-              <span key={k} style={{ animationDelay: `${k * 0.22}s` }} />
-            ))}
-          </span>
-        </div>
-      </div>
     </section>
   );
 }

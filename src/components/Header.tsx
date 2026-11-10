@@ -1,14 +1,16 @@
 import { forwardRef, useEffect, useState } from "react";
 import { site } from "../data/site";
-import { BurgerBars, ReactorRing } from "./ReactorIcon";
+import { BurgerBars, ReactorCore, ReactorRing } from "./ReactorIcon";
 
 interface HeaderProps {
   open: boolean;
   onToggle: () => void;
+  darkTheme: boolean;
+  onToggleTheme: () => void;
 }
 
 export const Header = forwardRef<HTMLButtonElement, HeaderProps>(
-  function Header({ open, onToggle }, buttonRef) {
+  function Header({ open, onToggle, darkTheme, onToggleTheme }, buttonRef) {
     const [solid, setSolid] = useState(false);
     const [imageFailed, setImageFailed] = useState(false);
 
@@ -34,27 +36,42 @@ export const Header = forwardRef<HTMLButtonElement, HeaderProps>(
           </span>
           <span className="sr">{site.name}</span>
         </a>
-        <button
-          ref={buttonRef}
-          className={`burger${open ? " open" : ""}`}
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="menu"
-          onClick={onToggle}
-        >
-          <ReactorRing />
-          {showImage ? (
-            <img
-              className="burger-img"
-              src={site.menuIcon}
-              alt=""
-              onError={() => setImageFailed(true)}
-            />
-          ) : (
-            <BurgerBars />
-          )}
-        </button>
+        <div className="hd-controls">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label={
+              darkTheme ? "Switch to the red theme" : "Enable Dark Knight theme"
+            }
+            aria-pressed={darkTheme}
+            onClick={onToggleTheme}
+          >
+            <span className="theme-toggle-bat" aria-hidden="true" />
+          </button>
+          <button
+            ref={buttonRef}
+            className={`burger${open ? " open" : ""}`}
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="menu"
+            onClick={onToggle}
+          >
+            <ReactorRing />
+            {showImage && darkTheme ? (
+              <ReactorCore />
+            ) : showImage ? (
+              <img
+                className="burger-img"
+                src={site.menuIcon}
+                alt=""
+                onError={() => setImageFailed(true)}
+              />
+            ) : (
+              <BurgerBars />
+            )}
+          </button>
+        </div>
       </header>
     );
   },

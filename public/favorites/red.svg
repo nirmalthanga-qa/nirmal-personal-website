@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#f7edda"/>
+      <stop offset="1" stop-color="#e7d6b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="840" fill="#92744d"/>
+  <rect x="17" y="17" width="566" height="806" rx="2" fill="#d4b989"/>
+  <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
+  <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="191" text-anchor="middle" fill="#271c17" font-family="Arial, sans-serif" font-size="94" font-weight="800" letter-spacing="-5">RED</text>
+  <text x="300" y="226" text-anchor="middle" fill="#34251d" font-family="Arial, sans-serif" font-size="20" font-weight="600">Bold, energetic, and full of emotion.</text>
+  <rect x="58" y="259" width="484" height="472" fill="#ac232a"/>
+  <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="3">BOLD  •  ENERGY  •  EMOTION</text>
+</svg>

@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer>
       <span>
-        © {new Date().getFullYear()} {site.name}. All rights reserved.
+        © {new Date().getFullYear()} {site.name}. ALL RIGHTS RESERVED.
       </span>
     </footer>
   );

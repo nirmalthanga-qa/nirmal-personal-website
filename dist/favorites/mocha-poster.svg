@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#fff5df"/>
+      <stop offset="1" stop-color="#ead5ad"/>
+    </linearGradient>
+    <linearGradient id="red" x2="1" y2="1">
+      <stop stop-color="#e44848"/>
+      <stop offset="1" stop-color="#941e27"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="840" fill="#92744d"/>
+  <rect x="17" y="17" width="566" height="806" fill="#d4b989"/>
+  <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
+  <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="184" text-anchor="middle" fill="#271c17" font-family="Arial,sans-serif" font-size="68" font-weight="800" letter-spacing="-3">CAFE MOCHA</text>
+  <text x="300" y="220" text-anchor="middle" fill="#34251d" font-family="Arial,sans-serif" font-size="20" font-weight="600">Coffee meets chocolate.</text>
+  <rect x="58" y="259" width="484" height="472" fill="url(#red)"/>
+  <path d="M58 641 173 533l94 73 111-139 164 164v100H58z" fill="#601c23" opacity=".58"/>
+  <path d="M58 686 170 588l84 65 100-121 188 164v35H58z" fill="#f3d9b0" opacity=".19"/>
+  <ellipse cx="302" cy="618" rx="131" ry="27" fill="#601c23" opacity=".55"/>
+  <path d="M220 443h161l-16 150c-2 22-20 38-42 38h-45c-22 0-40-16-42-38z" fill="#f3e8d2"/>
+  <path d="M366 464h26c26 0 37 19 34 39-3 20-17 32-39 32h-12" fill="none" stroke="#f3e8d2" stroke-width="15"/>
+  <path d="M231 464h139l-9 83H240z" fill="#6d3029"/>
+  <path d="M252 483c14-13 31-13 45 0 14-13 31-13 45 0" fill="none" stroke="#d7a96d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M264 421c-17-20 13-27 0-47m38 47c-17-20 13-27 0-47m38 47c-17-20 13-27 0-47" fill="none" stroke="#f3d9b0" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="426" cy="613" rx="26" ry="13" transform="rotate(-38 426 613)" fill="#54251f"/>
+  <path d="M411 620c8-13 20-22 33-27" fill="none" stroke="#d7a96d" stroke-width="2"/>
+  <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="3">RICH  •  SMOOTH  •  COMFORT</text>
+</svg>

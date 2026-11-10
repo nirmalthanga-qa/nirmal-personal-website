@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 840">
+  <defs>
+    <linearGradient id="paper" x2="0" y2="1">
+      <stop stop-color="#fff5df"/>
+      <stop offset="1" stop-color="#ead5ad"/>
+    </linearGradient>
+    <linearGradient id="red" x2="1" y2="1">
+      <stop stop-color="#e44848"/>
+      <stop offset="1" stop-color="#941e27"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="840" fill="#92744d"/>
+  <rect x="17" y="17" width="566" height="806" fill="#d4b989"/>
+  <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
+  <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="181" text-anchor="middle" fill="#271c17" font-family="Arial,sans-serif" font-size="70" font-weight="800" letter-spacing="-3">LIONEL MESSI</text>
+  <text x="300" y="220" text-anchor="middle" fill="#34251d" font-family="Arial,sans-serif" font-size="20" font-weight="600">The GOAT</text>
+  <rect x="58" y="259" width="484" height="472" fill="url(#red)"/>
+  <path d="M58 594q120-54 242 0t242 0v137H58z" fill="#64181f" opacity=".8"/>
+  <path d="M58 626h484m-484 45h484m-484 45h484" stroke="#f3d9b0" stroke-width="2" opacity=".24"/>
+  <rect x="152" y="304" width="296" height="296" fill="#64181f" opacity=".6"/>
+  <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="3">THE BEAUTIFUL GAME</text>
+</svg>

@@ -12,10 +12,12 @@ import { useReducedMotion } from "./hooks/useReducedMotion";
 import { Favorites } from "./components/Favorites";
 import { Automotive } from "./components/Automotive";
 import { SocialSidebar } from "./components/SocialSidebar";
+import { ProfessionalSpace } from "./components/ProfessionalSpace";
 
 export default function App() {
   const reduced = useReducedMotion();
   const [open, setOpen] = useState(false);
+  const [darkTheme, setDarkTheme] = useState(false);
   const [phase, setPhase] = useState<IntroPhase>(
     site.intro && !reduced ? "in" : "done",
   );
@@ -27,6 +29,10 @@ export default function App() {
   useEffect(() => {
     document.body.classList.toggle("intro", phase === "in");
   }, [phase]);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = darkTheme ? "dark" : "light";
+  }, [darkTheme]);
 
   useEffect(() => {
     document.body.classList.toggle("menu", open);
@@ -45,7 +51,13 @@ export default function App() {
   return (
     <>
       <Intro phase={phase} setPhase={setPhase} />
-      <Header ref={burger} open={open} onToggle={toggle} />
+      <Header
+        ref={burger}
+        open={open}
+        onToggle={toggle}
+        darkTheme={darkTheme}
+        onToggleTheme={() => setDarkTheme((dark) => !dark)}
+      />
       <MenuOverlay open={open} onNavigate={close} />
       <main>
         <Hero play={phase !== "in"} />
@@ -53,6 +65,7 @@ export default function App() {
         <Facts />
         <Favorites />
         <Automotive />
+        <ProfessionalSpace />
       </main>
       <SocialSidebar />
       <Footer />

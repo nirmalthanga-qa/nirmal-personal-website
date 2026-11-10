@@ -5,7 +5,7 @@ export interface Role {
 }
 
 export const site = {
-  name: "Nirmal Kumar",
+  name: "NIRMAL KUMAR",
 
   /** Short mark shown in the header (sized to match the burger). */
   logo: "NK",
@@ -82,5 +82,6 @@ export const site = {
     { id: "facts", label: "Intro Chat" },
     { id: "favorites", label: "Favorites" },
     { id: "automotive", label: "Automotive" },
+    { id: "professional-space", label: "Professional Space" },
   ],
 };

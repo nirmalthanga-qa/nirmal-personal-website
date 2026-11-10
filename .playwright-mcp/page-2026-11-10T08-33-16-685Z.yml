@@ -1,0 +1,122 @@
+- generic [ref=e2]:
+  - generic [aria-hidden] [ref=e3]:
+    - paragraph [ref=e4]:
+      - generic [ref=e5]: NIRMAL
+      - generic [ref=e6]: KUMAR
+    - paragraph [ref=e7]: Be Your Own Hero
+  - banner [ref=e8]:
+    - link "NIRMAL KUMAR, back to the top" [ref=e9] [cursor=pointer]:
+      - /url: "#top"
+      - generic [aria-hidden] [ref=e10]: NK
+      - generic [ref=e11]: NIRMAL KUMAR
+    - generic [ref=e12]:
+      - button "Enable Dark Knight theme" [ref=e13] [cursor=pointer]
+      - button "Open menu" [ref=e15] [cursor=pointer]
+  - main [ref=e21]:
+    - 'region "Welcome , you are on the website of NIRMAL KUMAR: Engineer, Sketch Artist and Automotive Enthusiast" [ref=e22]':
+      - button "Replay reactor power-on flash" [ref=e23] [cursor=pointer]
+      - generic [ref=e28]:
+        - 'heading "Welcome , you are on the website of NIRMAL KUMAR: Engineer, Sketch Artist and Automotive Enthusiast" [level=1] [ref=e29]':
+          - generic [ref=e30]: Welcome
+          - generic [aria-hidden] [ref=e31]:
+            - generic [ref=e32]: W
+            - generic [ref=e33]: e
+            - generic [ref=e34]: l
+            - generic [ref=e35]: c
+            - generic [ref=e36]: o
+            - generic [ref=e37]: m
+            - generic [ref=e38]: e
+          - generic [ref=e39]: ", you are on the website of NIRMAL KUMAR: Engineer, Sketch Artist and Automotive Enthusiast"
+        - paragraph [ref=e40]: TO MY PERSONAL PAGE
+      - link "Scroll to the next section" [ref=e41] [cursor=pointer]:
+        - /url: "#about"
+        - text: Scroll
+    - generic [ref=e42]:
+      - heading "Who Am I?" [level=2] [ref=e43]
+      - generic [ref=e46]:
+        - generic [ref=e47]: Senior Engineer, Sketch Artist, Automotive Enthusiast
+        - list [aria-hidden] [ref=e48]:
+          - listitem [ref=e49]: Senior Engineer
+          - listitem [ref=e50]: Sketch Artist
+          - listitem [ref=e51]: Automotive Enthusiast
+          - listitem [ref=e52]: Senior Engineer
+      - generic [ref=e53]:
+        - link "Open my professional portfolio" [ref=e54] [cursor=pointer]:
+          - /url: https://nirmal-pied.vercel.app/
+        - link "Scroll to car" [ref=e76] [cursor=pointer]:
+          - /url: "#automotive"
+    - region [ref=e88]:
+      - heading "Intro Chat" [level=2] [ref=e89]
+      - generic [ref=e91]:
+        - button "Open Messages" [ref=e97] [cursor=pointer]
+        - generic [aria-hidden]:
+          - generic:
+            - generic:
+              - button
+              - button
+              - button
+            - generic [aria-hidden]: G
+            - generic: Guest
+          - log
+          - generic [aria-hidden]: iMessage
+    - region "Personal Favorites" [ref=e120]:
+      - heading "My Favorites" [level=2] [ref=e121]
+      - generic "Favorite portraits" [ref=e122]:
+        - figure [ref=e123]:
+          - img "Red. Bold, energetic, and full of emotion." [ref=e124]
+        - figure [ref=e125]:
+          - img "Mocha poster with a cup of coffee and the words coffee meets chocolate." [ref=e126]
+        - figure [ref=e127]:
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - heading "Hill Stations" [level=3] [ref=e130]
+              - paragraph [ref=e131]: Reaching new heights.
+            - img "Green tea-covered hills and a lake among the mountains." [ref=e132]
+            - generic [ref=e133]: Hill Stations > Beaches
+        - figure [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - heading "Fall" [level=3] [ref=e137]
+              - paragraph [ref=e138]: Golden hour, golden leaves.
+            - img "A path beneath golden autumn leaves." [ref=e139]
+            - generic [ref=e140]: Fall is my second favorite F-word
+        - figure [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - heading "GOAT" [level=3] [ref=e144]
+              - paragraph [ref=e145]: Lionel Messi
+            - img "Lionel Messi." [ref=e146]
+            - generic [ref=e147]: The win comes after the work.
+        - figure [ref=e148]:
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - heading "Tony Stark" [level=3] [ref=e151]
+              - paragraph [ref=e152]: Genius, inventor, hero.
+            - img "Tony Stark." [ref=e153]
+            - generic [ref=e154]: Loved beyond measure.
+        - figure [ref=e155]:
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - heading "The Dark Knight Trilogy" [level=3] [ref=e158]
+              - paragraph [ref=e159]: We learn to rise by finding our feet again.
+            - img "The Dark Knight Trilogy." [ref=e160]
+            - generic [ref=e161]: Some things are no laughing matter.
+    - region "Favorite Automotive Brand" [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]: Favorite Automotive Brand
+        - generic [ref=e165]: Honda
+      - 'button "Show or hide favorite racer: Max Verstappen" [ref=e167] [cursor=pointer]'
+      - heading "Top 5 Favorite Cars of All-time" [level=3] [ref=e168]
+      - list [ref=e169]:
+        - listitem [ref=e170]:
+          - generic [ref=e172]: Honda Civic Type R (FL5)
+        - listitem [ref=e173]:
+          - generic [ref=e175]: Toyota Land Cruiser (100 series)
+        - listitem [ref=e176]:
+          - generic [ref=e178]: Porsche 911 Turbo S (992.2)
+        - listitem [ref=e179]:
+          - generic [ref=e181]: Audi RS6 Avant (C8)
+        - listitem [ref=e182]:
+          - generic [ref=e184]: BMW M5 (E39)
+  - contentinfo [ref=e185]:
+    - generic [ref=e186]: © 2026 NIRMAL KUMAR. ALL RIGHTS RESERVED.
