@@ -14,7 +14,7 @@
   <rect x="31" y="31" width="538" height="778" fill="url(#paper)"/>
   <path d="M58 76h484" stroke="#766650" stroke-width="2"/>
   <text x="300" y="174" text-anchor="middle" fill="#271c17" font-family="Arial,sans-serif" font-size="66" font-weight="800" letter-spacing="-2">TONY STARK</text>
-  <text x="300" y="211" fill="#34251d" font-family="Arial,sans-serif" font-size="17" font-weight="600" text-anchor="middle">Billionaire, Playboy, Philanthropist</text>
+  <text x="300" y="211" fill="#34251d" font-family="Arial,sans-serif" font-size="17" font-weight="600" text-anchor="middle">Love you, 3000</text>
   <rect x="58" y="259" width="484" height="472" fill="url(#red)"/>
   <path d="M58 632 190 500l82 63 102-141 168 137v172H58z" fill="#64181f" opacity=".6"/>
   <g fill="none" stroke="#f3d9b0" stroke-width="2" opacity=".55">
@@ -23,5 +23,5 @@
     <circle cx="88" cy="599" r="5" fill="#f3d9b0"/><circle cx="512" cy="598" r="5" fill="#f3d9b0"/>
   </g>
   <path d="M65 759h470" stroke="#766650" stroke-width="2"/>
-  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2">LOVE YOU, 3000</text>
+  <text x="300" y="786" text-anchor="middle" fill="#4a3926" font-family="Arial,sans-serif" font-size="16" font-weight="700" letter-spacing="2">BILLIONAIRE · PLAYBOY · PHILANTHROPIST</text>
 </svg>

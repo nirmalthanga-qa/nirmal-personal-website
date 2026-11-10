@@ -1,6 +1,6 @@
 export const links = {
   /** The "Professional Portfolio" button in the Who Am I section. */
-  professionalPortfolio: "https://nirmal-pied.vercel.app/",
+  professionalPortfolio: "https://portfolio.nirmal-thanga.com",
   /** Social links shown in the sidebar. */
   instagram: {
     handle: "@nirmal_thanga",
