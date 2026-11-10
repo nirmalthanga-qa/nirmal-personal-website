@@ -438,6 +438,7 @@ body.menu .top {
     padding-top: clamp(4rem, 8vw, 5rem);
     padding-bottom: clamp(3rem, 6vw, 4rem);
     min-height: auto;
+    background: var(--bg);
   }
 
   .icons {

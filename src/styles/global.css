@@ -50,6 +50,16 @@ a {
   outline-offset: 3px;
   border-radius: 6px;
 }
+@media (hover: none) {
+  :where(a, button, [role="button"], [role="link"], [tabindex]) {
+    -webkit-tap-highlight-color: transparent;
+  }
+  :where(a, button, [role="button"], [role="link"], [tabindex]):focus:not(
+      :focus-visible
+    ) {
+    outline: none;
+  }
+}
 .sr {
   position: absolute;
   width: 1px;
