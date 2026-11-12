@@ -12,16 +12,13 @@ export function ProfessionalSpace() {
         <span className="hl">Professional</span> Space
       </Reveal>
       <figure className="professional-space-artwork">
-        <picture>
-          <source srcSet="/workspace.avif" type="image/avif" />
-          <img
-            src="/workspace.png"
-            alt="Workspace with a laptop, coffee, notebook, phone, headphones, and car key."
-            width={1536}
-            height={1024}
-            decoding="async"
-          />
-        </picture>
+        <img
+          src="/workspace.png"
+          alt="Workspace with a laptop, coffee, notebook, phone, headphones, and car key."
+          width={1536}
+          height={1024}
+          decoding="async"
+        />
       </figure>
       <a
         className="professional-space-portfolio"
